@@ -1,0 +1,49 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bulma
+@import "~bulma/bulma";
+@import "~buefy/src/scss/buefy";
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.wrapper { flex: 1; }
+
+.has-text-orange { color: #FF9800; }
+
+.is-bordered {
+    border: 1px solid #0a0a0a;
+}
+
+.footer-frontend {
+    background-color: #0d47a1;
+}
+
+.footer-admin {
+    background-color: #000000;
+}
+
+table {
+    border-bottom: 1px solid #000000;
+}
+
+.table-link {
+    color: #0d47a1;
+}
+
+a.table-link:hover {
+    color: #00d138;
+}
+
+.field.has-addons .control:first-child:not(:only-child), .select select, .taginput .taginput-container.is-focusable, .textarea, .input  {
+    color: #0d47a1;
+    border: 1px solid #000000;
+    border-radius: 4px;
+}
