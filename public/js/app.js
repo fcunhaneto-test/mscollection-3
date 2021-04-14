@@ -2269,10 +2269,13 @@ __webpack_require__.r(__webpack_exports__);
       imdb: '',
       title_id: 0,
       cast: [],
-      directors: []
+      producers: []
     };
   },
   computed: {
+    header: function header() {
+      return this.$store.getters.getHeader;
+    },
     categories: function categories() {
       return this.$store.getters.getCategories;
     },
@@ -2410,7 +2413,7 @@ __webpack_require__.r(__webpack_exports__);
     /**
      * Send data to store movie.
      */
-    saveMovie: function saveMovie() {
+    saveTitle: function saveTitle() {
       var _this2 = this;
 
       this.formData.title = this.formData.title.trim();
@@ -2445,15 +2448,15 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    saveDirector: function saveDirector(d) {
+    saveProducer: function saveProducer(p) {
       if (this.title_id) {
-        axios.post('/api/directors/store', {
-          director: d.director.trim(),
-          order: d.order,
+        axios.post('/api/producer/store', {
+          producer: p.producer.trim(),
+          order: p.order,
           title_id: this.title_id
         }).then(function (response) {
           if (response.status === 200) {
-            d.saved = true;
+            p.saved = true;
           }
         })["catch"](function (error) {
           console.error(error);
@@ -2465,9 +2468,9 @@ __webpack_require__.r(__webpack_exports__);
      * Adicionar as tabelas novo diretor ou novo elenco em branco
      */
     addProducer: function addProducer() {
-      this.creators.push({
-        creator: '',
-        order: this.creator_index,
+      this.producers.push({
+        producer: '',
+        order: 1,
         saved: false
       });
     },
@@ -39426,7 +39429,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "button is-primary is-fullwidth",
-                    on: { click: _vm.saveMovie }
+                    on: { click: _vm.saveTitle }
                   },
                   [_vm._v("ENVIAR")]
                 )
@@ -39684,8 +39687,8 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "tbody",
-                      _vm._l(_vm.directors, function(d, i) {
-                        return _vm.directors
+                      _vm._l(_vm.producers, function(p, i) {
+                        return _vm.producers
                           ? _c("tr", { key: i }, [
                               _c("td", [
                                 _c("input", {
@@ -39693,14 +39696,14 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.directors[i].director,
-                                      expression: "directors[i].director"
+                                      value: _vm.producers[i].producer,
+                                      expression: "producers[i].producer"
                                     }
                                   ],
                                   staticClass: "input",
                                   attrs: { type: "text", name: "director" },
                                   domProps: {
-                                    value: _vm.directors[i].director
+                                    value: _vm.producers[i].producer
                                   },
                                   on: {
                                     input: function($event) {
@@ -39708,8 +39711,8 @@ var render = function() {
                                         return
                                       }
                                       _vm.$set(
-                                        _vm.directors[i],
-                                        "director",
+                                        _vm.producers[i],
+                                        "producer",
                                         $event.target.value
                                       )
                                     }
@@ -39723,20 +39726,20 @@ var render = function() {
                                     {
                                       name: "model",
                                       rawName: "v-model",
-                                      value: _vm.directors[i].order,
-                                      expression: "directors[i].order"
+                                      value: _vm.producers[i].order,
+                                      expression: "producers[i].order"
                                     }
                                   ],
                                   staticClass: "input",
                                   attrs: { type: "number", name: "order" },
-                                  domProps: { value: _vm.directors[i].order },
+                                  domProps: { value: _vm.producers[i].order },
                                   on: {
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
                                       }
                                       _vm.$set(
-                                        _vm.directors[i],
+                                        _vm.producers[i],
                                         "order",
                                         $event.target.value
                                       )
@@ -39750,11 +39753,11 @@ var render = function() {
                                   "button",
                                   {
                                     staticClass: "button is-link is-small",
-                                    attrs: { disabled: _vm.directors[i].saved },
+                                    attrs: { disabled: _vm.producers[i].saved },
                                     on: {
                                       click: function($event) {
-                                        return _vm.saveDirector(
-                                          _vm.directors[i]
+                                        return _vm.saveProducer(
+                                          _vm.producers[i]
                                         )
                                       }
                                     }

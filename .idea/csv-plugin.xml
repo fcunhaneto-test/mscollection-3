@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/app/Http/Controllers/Cast/CastController.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/app/Http/Controllers/Qualifiers/MediaController.php">
           <value>
             <Attribute>
@@ -11,6 +18,27 @@
           </value>
         </entry>
         <entry key="/app/Http/Controllers/TitleController.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/app/Models/Cast/Cast.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/app/Models/Cast/Character.php">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/app/Models/Cast/Producer.php">
           <value>
             <Attribute>
               <option name="separator" value=";" />
@@ -46,6 +74,13 @@
           </value>
         </entry>
         <entry key="/resources/js/backend/StoreTitle.vue">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/resources/js/backend/TitleStore.vue">
           <value>
             <Attribute>
               <option name="separator" value=":" />

@@ -99,7 +99,7 @@
                     </div>
                     <div class="column is-4 mt-3"></div>
                     <div class="column is-4 mt-3">
-                        <button class="button is-primary is-fullwidth" @click="saveMovie">ENVIAR</button>
+                        <button class="button is-primary is-fullwidth" @click="saveTitle">ENVIAR</button>
                     </div>
                     <div class="column is-4 mt-3"></div>
                     <hr>
@@ -155,13 +155,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-if="directors" v-for="(d, i) in directors" :key="i">
-                                    <td><input type="text" name="director" class="input" v-model="directors[i].director"></td>
-                                    <td><input type="number" name="order" class="input" v-model="directors[i].order"></input>
+                                <tr v-if="producers" v-for="(p, i) in producers" :key="i">
+                                    <td><input type="text" name="director" class="input" v-model="producers[i].producer"></td>
+                                    <td><input type="number" name="order" class="input" v-model="producers[i].order"></input>
                                     </td>
                                     <td>
-                                        <button class="button is-link is-small" :disabled="directors[i].saved"
-                                                @click="saveDirector(directors[i])">
+                                        <button class="button is-link is-small" :disabled="producers[i].saved"
+                                                @click="saveProducer(producers[i])">
                                             salvar
                                         </button>
                                     </td>
@@ -228,10 +228,13 @@ export default {
             imdb: '',
             title_id: 0,
             cast: [],
-            directors: [],
+            producers: [],
         }
     },
     computed: {
+        header() {
+            return this.$store.getters.getHeader
+        },
         categories() {
             return this.$store.getters.getCategories
         },
@@ -346,7 +349,7 @@ export default {
         /**
          * Send data to store movie.
          */
-        saveMovie() {
+        saveTitle() {
             this.formData.title = this.formData.title.trim()
             this.formData.original_title = this.formData.original_title.trim()
             this.formData.media = JSON.stringify(this.formData.media)
@@ -379,15 +382,15 @@ export default {
                 })
             }
         },
-        saveDirector(d) {
+        saveProducer(p) {
             if (this.title_id) {
-                axios.post('/api/directors/store', {
-                    director: d.director.trim(),
-                    order: d.order,
+                axios.post('/api/producer/store', {
+                    producer: p.producer.trim(),
+                    order: p.order,
                     title_id: this.title_id
                 }).then(response => {
                     if (response.status === 200) {
-                        d.saved = true
+                        p.saved = true
                     }
                 }).catch(error => {
                     console.error(error)
@@ -398,9 +401,9 @@ export default {
          * Adicionar as tabelas novo diretor ou novo elenco em branco
          */
         addProducer() {
-            this.creators.push({
-                creator: '',
-                order: this.creator_index,
+            this.producers.push({
+                producer: '',
+                order: 1,
                 saved: false
             })
         },

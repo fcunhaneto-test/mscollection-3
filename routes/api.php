@@ -27,8 +27,12 @@ Route::prefix('category')->group(function() {
     Route::get('', 'Qualifiers\CategoryController@index');
 });
 
+Route::prefix('producer')->group(function() {
+    Route::post('/store', 'Cast\ProducerController@store');
+});
+
 Route::prefix('cast')->group(function() {
-    Route::get('/store', 'Cast\CastController@store');
+    Route::post('/store', 'Cast\CastController@store');
 });
 
 

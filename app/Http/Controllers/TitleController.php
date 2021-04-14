@@ -86,7 +86,7 @@ class TitleController extends Controller
         $title = new Title();
         $exist = $title->where('title', '=', $request->title)->where('year', '=', $request->year)->count();
         if($exist) {
-            return response()->json(['title' => $request->title], 304);
+            return response()->json(['title' => $request->title], 202);
         }
         $title->title = $request->title;
         $title->original_title = $request->original_title;
