@@ -11,6 +11,9 @@
 <script>
 export default {
     name: "Titles",
+    props: {
+        table: String,
+    },
     computed: {
         header() { return this.$store.getters.getHeader },
         subheader() { return this.$store.getters.getSubHeader },

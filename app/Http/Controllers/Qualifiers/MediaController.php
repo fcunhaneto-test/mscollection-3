@@ -14,6 +14,11 @@ class MediaController extends Controller
         $this->table = new Media();
     }
 
+    public function index()
+    {
+        return Media::all();
+    }
+
     public function streams()
     {
         return $this->table->streams();

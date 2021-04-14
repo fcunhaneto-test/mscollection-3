@@ -22,7 +22,7 @@ class CreateTitlesTable extends Migration
             $table->string('category_1', 25)->nullable();
             $table->string('category_2', 25)->nullable();
             $table->unsignedTinyInteger('our_rating')->default(0);
-            $table->unsignedTinyInteger('imdb_rating')->default(0);
+            $table->decimal('imdb_rating', 10, 1)->default(0);
             $table->string('poster')->nullable();
             $table->text('summary')->nullable();
             $table->boolean('is_movie')->default(true);

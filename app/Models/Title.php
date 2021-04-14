@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Cast\Cast;
+use App\Models\Qualifiers\Media;
 use Illuminate\Database\Eloquent\Model;
 
 class Title extends Model
@@ -12,4 +13,14 @@ class Title extends Model
         'title', 'original_title', 'year', 'time', 'category_1', 'category_2','our_rating', 'imdb_rating',
         'poster', 'summary'
     ];
+
+    public function media()
+    {
+        return $this->belongsToMany(Media::class);
+    }
+
+    public function cast()
+    {
+        return $this->belongsToMany(Cast::class, 'cast_title')->withPivot('order', 'star');
+    }
 }

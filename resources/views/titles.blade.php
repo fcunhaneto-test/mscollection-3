@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <index :table="'{{ $table }}'" :header="'{{ $header }}'" :subheader="'{{ $subheader }}'" ></index>
+    <index :header="'{{ $header }}'" :subheader="'{{ $subheader }}'" ></index>
 @endsection
 
 @section('footer')
